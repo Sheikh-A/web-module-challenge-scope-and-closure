@@ -278,3 +278,167 @@ function logIndex(chosenItem) {
 // const newArray = elements.map(item => 'Element: ' + item);
 // newArray.forEach(item => console.log(item));
 */
+
+
+function sayHello(name) {
+  console.log(`Hello, ${name}`);
+};
+
+function callSayHelloWithAli(callback) {
+  const innerName = 'Ali';
+  callback(innerName)
+};
+
+callSayHelloWithAli(sayHello);
+
+const elements = ['earth', 'wind', 'fire', 'water'];
+
+function showFirst(array, cb) {
+  cb(array[0]);
+}
+
+//cb = (firstItem) => { console.log(firstItem); }
+showFirst(elements, (firstItem) => {
+  console.log(firstItem);
+});
+
+function showLength(list, cb) {
+  cb(list.length);
+};
+
+showLength(elements, (lengthOfList) => {
+  console.log(lengthOfList);
+});
+
+elements.forEach((element, index) => {
+  console.log(element, index)
+}); //on ARRAYS
+
+const newArray = elements.map((el, index) => {
+  return `${el} + ${index}`;
+});
+
+console.log(newArray);
+console.log(elements);
+//Return Array of items
+
+/////
+
+function calc(num1, num2, cb) {
+  return cb(num1, num2)
+  //add(4,6)
+  //sub(4,6)
+  //mult(4,6)
+  //div(4,6)
+}
+
+const add = (num1, num2) => num1 + num2;
+const sub = (num1, num2) => num1 - num2;
+const mult = (num1, num2) => num1 * num2;
+const div = (num1, num2) => num1 / num2;
+
+console.log(calc(4,5, add))
+
+function calc(num1, num2, cb) {
+  return cb(num1, num2)
+}
+
+function calc(num1, num2, add) {
+  return add(num1, num2)
+}
+
+function calc(num1, num2, sub) {
+  return sub(num1, num2)
+}
+
+//.forEach() vs for loop
+//For each will go through every item
+//doenst return new array, return is optional
+//For loop when you don't want to go through every item in array (larger data set)
+
+cityData.forEach(function(item) {
+  console.log(item.city);
+  console.log(item.state);
+});
+
+cityData.forEach(function(item, index) {
+  console.log(item.city);
+  console.log(item.state);
+  console.log(index);
+});
+
+//lowercase initials
+const lowerCaseStates = [];
+cityData.forEach((item) => {
+  return lowerCaseStates.push(item.state.toLowerCase());
+});
+
+console.log(lowerCaseStates);
+
+//.map
+//returns a new array always, doesn't change original
+//used for converting data, needs return keyword
+
+const lowerCaseStates = cityData.map((item) => {
+  return item.state.toLowerCase();
+});
+
+console.log(lowerCaseStates);
+
+//
+//runner Array
+
+const shirtOrder = [];
+
+requestAnimationFrame.forEach((item) => {
+  return shirtOrder.push(item.last_name, item.shirt_size);
+})
+
+console.log(shirtOrder);
+
+const shirtOrderMap = runner.map((item) => {
+  return (runner.last_name, runner.shirt_size)
+});
+
+
+//.filter()
+//returns a new array
+//does not change original
+
+const bigPop = cityData.filter((item) => {
+  return item.population > 500000;
+});
+
+console.log(bigPop);
+
+//.reduce()
+//returns value not array
+//used for sums and products
+//needs accumulator, initial value optional
+//needs return
+
+const totalLand = cityData.reduce(function(accumulator, item) {
+  console.log(`${accumulator} ${item.land_area}`)
+  return accumulator + item.land_area;
+});
+
+console.log(totalLand);
+
+
+//Skeleton
+//forEach
+array.forEach(function(item) {
+  console.log(item.thingIamlookingFor)
+});
+
+const newArray = array.map(function(item) {
+  return thingThatGoesinNewArray;
+});
+
+const newArray = array.filter(function(item) {
+  return ConditionThatCanBeTrueOrFalse
+})
+
+const singleValue = array.reduce(function(acc, item) {
+  return acc + item.whatIwantToAdd
+}, initialValue);
